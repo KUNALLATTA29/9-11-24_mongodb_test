@@ -1,0 +1,18 @@
+ANS 1.  db.books.aggregate([{$lookup:{from:"authors", localField:"author_id", foreignField:"_id",as:"authorDetails"}},{$match:{"authorDetails.name":"J.K. Rowling"}}])
+
+ANS 2.  db.books.aggregate([{$group:{_id:"$genre",count:{$sum:1}}}])
+
+ANS 3.   db.books.aggregate([{$lookup:{from:"authors",localField:"_id",foreignField:"author_id",as:"authorDetails"}},{$group:{_id:"$author_id",total_books:{$sum:1}}},{$match:{total_books:{$gt:1}}}])
+
+ANS 4.  db.books.aggregate([{$lookup:{from:"authors",localField:"author_id",foreignField:"_id",as:"authorDetails"}},{$sort:{publication_year:-1}}])
+
+ANS 5.  db.books.aggregate([{$group:{_id:"$genre", avgyear:{$avg:"$publication_year"}}}])
+
+ANS 6.   db.books.aggregate([{$group:{_id:"$author_id", total_books:{$sum:1}}},{$sort:{total_books:-1}}])
+
+ANS 7.  db.books.aggregate([{$match:{publication_year:{$gt:2000}}}])
+
+ANS 8.   db.books.aggregate([{$lookup:{from:"authors",localField:"author_id",ftodaytask> db.books.aggregate([{$lookup:{from:"authors",localField:"author_id",foreignField:"_id",as:"authorDetails"}},{$match:{genre:"Fantasy"}}])
+
+
+ANS 10.  db.books.aggregate([{$match:{publication_year:{$gte:1950, $lte:2000}}}])
